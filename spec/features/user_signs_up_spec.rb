@@ -8,6 +8,8 @@ feature "Create a Course", %q(
   Acceptance Criteria
 
   [X] There is a link to 'Sign Up' on the homepage.
+  [X] If a user is signed in, the homepage displays "Sign Out".
+  [X] If a user is not signed in, the homepage displays "Sign Up" and "Sign In".
   [X] If I fill in my first name, last name, display_name, email, password, and password confirmation correctly,
       I am greeted with a confirmation message that my account has been created.
   [X] If the password and password confirmation fields do not match, I am given an error message.
@@ -29,6 +31,8 @@ feature "Create a Course", %q(
     click_button "Sign Up"
 
     expect(page).to have_content "Welcome! You have signed up successfully."
+    expect(page).to_not have_link "Sign Up"
+    expect(page).to have_link "Sign Out"
   end
 
   scenario "user provides mismatched passwords" do
