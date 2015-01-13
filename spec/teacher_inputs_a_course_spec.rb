@@ -17,8 +17,11 @@ feature "Create a Course", %q(
 
 ) do
 
-  scenario "teacher creates a course" do
+  before(:each) do
     visit new_course_path
+  end
+
+  scenario "teacher creates a course" do
     fill_in "Title", with: "Algebra"
     fill_in "Description", with: "Algebra is the foundation for all higher maths."
 
@@ -28,8 +31,6 @@ feature "Create a Course", %q(
   end
 
   scenario "teacher is given an error if they forget a title" do
-    visit new_course_path
-
     click_button "Create Course"
 
     expect(page).to have_content("Title can't be blank")
