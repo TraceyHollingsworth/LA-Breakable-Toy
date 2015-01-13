@@ -33,5 +33,6 @@ feature "Create a Course", %q(
     click_button "Create Course"
 
     expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("New Course")
   end
 end
