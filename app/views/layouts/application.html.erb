@@ -1,32 +1,65 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>BreakableToy</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application'%>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <div>
-    <% if !user_signed_in? %>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-      <li><%= link_to "Sign In", new_user_session_path %></li>
-    <% else %>
-      <li><%= link_to "Sign Out", destroy_user_session_path %></li>
-    <% end %>
-  </div>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-  <div class="notice devise"><%= notice %></div>
-  <div class "alert devise"><%= alert %></div>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-  <% flash.each do |type, message| %>
-    <div class="flash flash-<%= type %>">
-      <%= message %>
+  <body>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area inline-list">
+        <li class="name show-for-medium-up">
+          <h1><a href="/">Pertinent Planner</a></h1>
+        </li>
+        <li class="namesmall show-for-small-only">
+          <h1><a href="/">Pertinent Planner</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <% if user_signed_in? %>
+            <li><%= link_to "My Courses", courses_path %></li>
+            <li><%= link_to "Create New Course", new_course_path %></li>
+            <li class="has-dropdown">
+              <a href="#">
+                <strong><%= current_user.display_name %></strong>
+              </a>
+              <ul class="dropdown">
+                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+              </ul>
+            </li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+          <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path  %></li>
+            <li><%= link_to "Login", new_user_session_path  %></li>
+          <% end %>
+        </ul>
+      </section>
+    </nav>
+
+    <div class="row">
+      <div class="notice devise"><%= notice %></div>
+      <div class "alert devise"><%= alert %></div>
+      <div class="columns small-12 wrapper">
+        <% flash.each do |type, message| %>
+          <div class="flash flash-<%= type %>">
+             <%= message %>
+          </div>
+        <% end %>
+
+        <%= yield %>
+        <%= javascript_include_tag "application" %>
+      </div>
     </div>
-  <% end %>
-
-<%= yield %>
-
-</body>
+  </body>
 </html>
