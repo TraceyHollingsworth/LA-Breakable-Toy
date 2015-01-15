@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :display_name]
   end
+
+  def authorize_teacher!
+    if !current_user.teacher?
+      redirect_to root_path
+    end
+  end
 end

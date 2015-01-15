@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_many :courses
-  belongs_to :role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,7 +14,13 @@ class User < ActiveRecord::Base
   validates :last_name,
     presence: true,
     length: { maximum: 50 }
-  validates :role_id,
-    presence: true
 
+
+  def teacher?
+    role == "teacher"
+  end
+
+   def student?
+    role == "student"
+  end
 end

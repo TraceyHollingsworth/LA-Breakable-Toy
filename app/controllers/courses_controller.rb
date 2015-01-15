@@ -6,10 +6,12 @@ class CoursesController < ApplicationController
   end
 
   def new
+    authorize_teacher!
     @course = Course.new
   end
 
   def create
+    authorize_teacher!
     @course = Course.new(course_params)
     if @course.save
       redirect_to courses_path, notice: "Course Created Successfully!"
