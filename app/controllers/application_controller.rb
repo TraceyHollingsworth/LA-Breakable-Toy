@@ -10,7 +10,13 @@ class ApplicationController < ActionController::Base
 
   def authorize_teacher!
     if !current_user.teacher?
-      redirect_to root_path
+      redirect_to root_path, notice: "Student accounts do not have access to that feature."
+    end
+  end
+
+  def authorize_student!
+    if !current_user.student?
+      redirect_to root_path, notice: "Teacher accounts do not have access to that feature."
     end
   end
 end
