@@ -14,7 +14,13 @@ class User < ActiveRecord::Base
   validates :last_name,
     presence: true,
     length: { maximum: 50 }
-  validates :role_id,
-    presence: true
 
+
+  def teacher?
+    role == "teacher"
+  end
+
+   def student?
+    role == "student"
+  end
 end

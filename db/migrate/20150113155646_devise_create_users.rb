@@ -31,7 +31,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.datetime :locked_at
       t.string :first_name, null: false
       t.string :last_name, null: false
-      t.integer :role_id, null: false, default: 1
       t.string :avatar
       t.string :display_name, null: false
 

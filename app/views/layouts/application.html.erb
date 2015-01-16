@@ -4,21 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Lessonboard - Lesson Planner" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag "favicon.ico" %>
   </head>
 
   <body>
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area inline-list">
         <li class="name show-for-medium-up">
-          <h1><a href="/">Pertinent Planner</a></h1>
+          <h1><a href="/">Lessonboard</a></h1>
         </li>
         <li class="namesmall show-for-small-only">
-          <h1><a href="/">Pertinent Planner</a></h1>
+          <h1><a href="/">Lessonboard</a></h1>
         </li>
         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -48,15 +49,8 @@
     </nav>
 
     <div class="row">
-      <div class="notice devise"><%= notice %></div>
-      <div class "alert devise"><%= alert %></div>
       <div class="columns small-12 wrapper">
-        <% flash.each do |type, message| %>
-          <div class="flash flash-<%= type %>">
-             <%= message %>
-          </div>
-        <% end %>
-
+        <%= render 'layouts/flash' %>
         <%= yield %>
         <%= javascript_include_tag "application" %>
       </div>
