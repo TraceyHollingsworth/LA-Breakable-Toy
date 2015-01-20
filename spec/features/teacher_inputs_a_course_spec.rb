@@ -26,6 +26,7 @@ feature "Create a Course", %q(
         display_name: "Mr. Shmoe",
         email: "user@example.com",
         password: "supersecret",
+        role: "teacher"
       )
 
       visit new_user_session_path

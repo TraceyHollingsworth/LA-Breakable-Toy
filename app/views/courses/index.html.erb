@@ -1,7 +1,8 @@
+<br>
 <div class="container">
   <ul>
     <% @courses.each do |course| %>
-      <li><%= link_to course.title, course_path(course) %></li>
+      <%= link_to course.title, course_path(course), class: "button secondary expand" %>
     <% end %>
   </ul>
 </div>

@@ -2,12 +2,11 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @courses = Course.all
+    @courses = current_user.courses
   end
 
   def new
     authorize_teacher!
-    # @course = Course.new
     @course = current_user.courses.build
   end
 
@@ -15,7 +14,6 @@ class CoursesController < ApplicationController
     authorize_teacher!
     @course = current_user.courses.build(course_params)
 
-    # @course = Course.new(course_params)
     if @course.save
       redirect_to courses_path, notice: "Course Created Successfully!"
     else
