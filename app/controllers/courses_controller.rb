@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
   def index
     @courses = current_user.courses
@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to courses_path, notice: "Course Created Successfully!"
     else
+      flash[:alert] = @course.errors.full_messages.join(".  ")
       render :new
     end
   end
@@ -41,7 +42,7 @@ class CoursesController < ApplicationController
       end
     else
       redirect_to root_path
-      flash[:alert] = "You are not the owner of that course"
+      flash[:alert] = "You are not the owner of that course."
     end
   end
 
