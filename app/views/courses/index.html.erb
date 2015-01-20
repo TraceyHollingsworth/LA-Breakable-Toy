@@ -1,3 +1,9 @@
-<% @courses.each do |course| %>
-  <%= course.title %><br>
-<% end %>
+<br>
+<div class="container">
+  <ul>
+    <% @courses.each do |course| %>
+      <%= link_to course.title, course_path(course), class: "button secondary expand" %>
+    <% end %>
+  </ul>
+</div>
+
