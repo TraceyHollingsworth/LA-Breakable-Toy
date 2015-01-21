@@ -1,0 +1,50 @@
+body.welcome
+{
+  background: {
+   image: asset-url("lessonboard2.png");
+ }
+}
+// ==========================
+// NAV BAR
+// ==========================
+
+$top-bar-height: 65px;
+
+.top-bar {
+
+  .top-bar-section li:not(.has-form) a:not(.button),
+  &, li a, .name h1 a,
+  &.expanded .title-area {
+    background: white;
+    color: black;
+    height: $top-bar-height;
+    line-height: $top-bar-height;
+  }
+
+  .logo {
+    margin-top: -5px;
+    margin-left: 20px;
+  }
+
+  .top-bar-section li:not(.has-form) a:not(.button) {
+    transition: background .2s;
+
+    &:hover {
+      background: #eee;
+    }
+  }
+
+  .top-bar-section .has-dropdown {
+    & > a:after {
+      border-color: black transparent transparent;
+      margin-top: 5px;
+    }
+    ul {
+      text-align: center;
+    }
+  }
+}
+
+.top-bar .toggle-topbar.menu-icon a {
+  color: #000;
+}
