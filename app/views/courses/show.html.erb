@@ -12,4 +12,17 @@
   <% if current_user.id == @course.user_id %>
     <%= link_to "Delete Course", course_path(@course), class: "tiny button alert", method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
+  <%= render partial: "lessons/new_lesson_form" %>
+<% end %>
+
+<% @course.lessons.each do |lesson| %>
+  <p>
+    <%= lesson.date %>
+    <%= lesson.objective %>
+    <%= lesson.prework %>
+    <%= lesson.lecture %>
+    <%= lesson.postwork %>
+    <%= lesson.extra_help %>
+    <%= lesson.add_ons %>
+  <hr></p>
 <% end %>

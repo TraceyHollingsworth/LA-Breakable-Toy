@@ -1,0 +1,26 @@
+<h3>Add a New Lesson</h3>
+
+<%= form_for ([@course, @course.lessons.build]) do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+
+  <%= f.label :objective %>
+  <%= f.text_area :objective %>
+
+  <%= f.label :prework %>
+  <%= f.text_area :prework %>
+
+  <%= f.label :lecture %>
+  <%= f.text_area :lecture %>
+
+  <%= f.label :postwork %>
+  <%= f.text_area :postwork %>
+
+  <%= f.label :extra_help %>
+  <%= f.text_area :extra_help %>
+
+  <%= f.label :add_ons %>
+  <%= f.text_area :add_ons %>
+
+  <%=  f.submit "Add Lesson", class: "tiny button success" %>
+<% end %>
