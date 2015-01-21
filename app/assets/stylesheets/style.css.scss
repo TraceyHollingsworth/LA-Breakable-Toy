@@ -34,17 +34,6 @@ $top-bar-height: 65px;
     }
   }
 
-  .name h1 a,
-  .namesmall h1 a {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: bold;
-    font-size: 40px;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
   .top-bar-section .has-dropdown {
     & > a:after {
       border-color: black transparent transparent;
