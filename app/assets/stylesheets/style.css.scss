@@ -48,3 +48,31 @@ $top-bar-height: 65px;
 .top-bar .toggle-topbar.menu-icon a {
   color: #000;
 }
+
+p {
+  font-family: inherit;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: .25;
+  margin-bottom: .1rem;
+  text-rendering: optimizeLegibility;
+}
+.alert-box {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding: 0.875rem 1.5rem 0.875rem 0.875rem;
+  font-size: 0.8125rem;
+  transition: opacity 300ms ease-out;
+  background-color: #B6D383;
+  border-color: #B6D383;
+  color: white;
+}
+
+.button {
+  background-color: #000;
+  border-color: #000;
+}
